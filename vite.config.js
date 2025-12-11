@@ -11,5 +11,21 @@ export default defineConfig({
                 changeOrigin: true
             }
         }
+    },
+    // Production build configuration
+    build: {
+        outDir: 'dist',
+        sourcemap: false,
+        rollupOptions: {
+            output: {
+                manualChunks: undefined
+            }
+        }
+    },
+    // Environment variable prefix
+    envPrefix: 'VITE_',
+    // Define global constants
+    define: {
+        'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'https://attendancebackend-12pm.onrender.com')
     }
 })
